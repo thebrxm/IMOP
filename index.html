@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMOP - Incident Management Operational Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      /* Custom animation for incoming notifications */
+      @keyframes slideIn {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-slide-in {
+        animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      
+      /* Critical Alert Glow Animation */
+      @keyframes glow-pulse {
+        0%, 100% { 
+          box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); 
+          border-color: #dc2626; /* red-600 */
+        }
+        50% { 
+          box-shadow: 0 0 20px 2px rgba(220, 38, 38, 0.5); 
+          border-color: #ef4444; /* red-500 */
+        }
+      }
+      .animate-alert-critical {
+        animation: glow-pulse 2s ease-in-out infinite;
+        z-index: 10;
+      }
+
+      .font-mono { font-family: 'JetBrains Mono', monospace; }
+      
+      /* Leaflet specific overrides for dark mode integration */
+      .leaflet-container {
+        font-family: 'Inter', sans-serif !important;
+        background: #f8fafc;
+      }
+      .dark .leaflet-layer,
+      .dark .leaflet-control-zoom-in,
+      .dark .leaflet-control-zoom-out,
+      .dark .leaflet-control-attribution {
+        filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "leaflet": "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

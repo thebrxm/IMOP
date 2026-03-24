@@ -1,0 +1,7 @@
+{
+  "name": "Remix: IMOP",
+  "description": "Incident Management Operational Platform - A real-time incident notification system using browser push APIs and Gemini AI.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
